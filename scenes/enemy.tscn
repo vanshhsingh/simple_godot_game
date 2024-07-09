@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgrkx580jn1bt"]
+
+[ext_resource type="Texture2D" uid="uid://mho14y8iq4fl" path="res://assets/sprites/Aubachauba2.png" id="1_b31de"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gih5v"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0if3h"]
+atlas = ExtResource("1_b31de")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un0xc"]
+atlas = ExtResource("1_b31de")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7wr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0if3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un0xc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="enemy" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_gih5v")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_q7wr2")
+autoplay = "default"
