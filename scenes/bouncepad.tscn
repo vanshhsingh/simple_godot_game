@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck23g1o8ucc53"]
+
+[ext_resource type="Texture2D" uid="uid://wdeopljdlv80" path="res://assets/sprites/world_tileset.png" id="1_sghaw"]
+
+[sub_resource type="GDScript" id="GDScript_1lknq"]
+script/source = "extends Area2D
+
+
+
+
+func _on_body_entered(main):
+	if main.name == \"player\":
+		print(\"Check\")
+		main.velocity.y = -600
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y1cr"]
+size = Vector2(16, 8)
+
+[node name="bouncepad" type="Area2D"]
+script = SubResource("GDScript_1lknq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_0y1cr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sghaw")
+region_enabled = true
+region_rect = Rect2(112, 128, 16, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

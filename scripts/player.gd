@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 
 @export var Speed :  float = 50.0
-@export var jump_force : float = -100.0
+@export var jump_force : float = -120.0
 @export var jump_time: float = 0.1 #how long spacebar is held
 @export var cayote_time : float = 0.05 #how long it waits before you can jump off the edge
 @export var gravity_multiplier : float = 3.0
+@onready var mainSprite = $AnimatedSprite2D2
 
 
 
@@ -47,6 +48,15 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("move_left", "move_right")
+	
+	#HANDLING PLAYER SPRITE FLIP 
+	
+	if direction>0:
+		mainSprite.flip_h = false
+	elif direction<0:
+		mainSprite.flip_h = true
+	
+	
 	if direction:
 		velocity.x = direction * Speed
 	else:
