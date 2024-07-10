@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var Speed :  float = 50.0
+@export var Speed :  float = 1000000
 @export var jump_force : float = -100.0
 @export var jump_time: float = 0.1 #how long spacebar is held
 @export var cayote_time : float = 0.05 #how long it waits before you can jump off the edge
